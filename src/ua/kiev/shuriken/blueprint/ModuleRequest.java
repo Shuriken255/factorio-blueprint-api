@@ -58,7 +58,7 @@ public class ModuleRequest {
 	}
 	
 	/**
-	 * Clears all module requests.
+	 * Clears all modules from requests.
 	 */
 	public void clear() {
 		modules.clear();
