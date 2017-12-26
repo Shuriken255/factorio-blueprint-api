@@ -1,4 +1,4 @@
-# factorio-blueprint-api
+# Factorio Blueprint API
 This API provides you easy way to create blueprint strings for Factorio game in Java.
 It will automaticly generate blueprint string, so you won't need to care about building JSON file, compressing it or generat Base64 string.
 
