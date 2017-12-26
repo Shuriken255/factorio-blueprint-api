@@ -7,18 +7,35 @@ import java.util.Base64.Encoder;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
+/**
+ * This library uses this class to parse blueprint strings into blueprint JSON representations and back.
+ */
 public class BlueprintParser {
 	
 	private static int bufferSize = 1024*256;
 	
+	/**
+	 * Returns buffer's size in bytes that is used for converting 
+	 * as blueprint strings into JSON, as JSON into blueprint strings.
+	 * @return Buffer's size in bytes.
+	*/
 	public static int getBufferSize() {
 		return bufferSize;
 	}
 	
+	/**
+	 * Changes buffer's size that is used for conversion between blueprint strings and JSON.
+	 * @param bufferSize Buffer size in bytes
+	 */
 	public static void setBufferSize(int bufferSize) {
 		BlueprintParser.bufferSize = bufferSize;
 	}
 	
+	/**
+	 * Converts blueprint string to representation of blueprint in JSON.
+	 * @param blueprint Factorio's blueprint string.
+	 * @return JSON representation of blueprint.
+	 */
 	public static String fromBlueprintStringToJSON(String blueprint) {
 		try {
 			blueprint = blueprint.substring(1, blueprint.length());
@@ -39,6 +56,11 @@ public class BlueprintParser {
 		}
 	}
 	
+	/**
+	 * Converts representation of blueprint in JSON to blueprint string.
+	 * @param json blueprint's representation in JSON.
+	 * @return Blueprint string.
+	 */
 	public static String fromJSONToBlueprintString(String json) {
 		try {
 			Deflater zEncoder = new Deflater();

@@ -1,22 +1,36 @@
 package ua.kiev.shuriken.blueprint;
 
+/**
+ * This class is used to describe default circuit condition.
+ */
 public class Condition {
 	
-	public static final char LESS_THAN = '<';
-	public static final char MORE_THAN = '>';
-	public static final char EQUALS = '=';
+	public static final char COMPARATOR_LESS_THAN = '<';
+	public static final char COMPARATOR_MORE_THAN = '>';
+	public static final char COMPARATOR_EQUALS = '=';
 	
-	
-	public Condition(String firstSignal, char comporator, String secondSignal) {
+	/**
+	 * Creates new Condition class object with signal as second part in this condition.
+	 * @param firstSignal first signal that will be used for comparison
+	 * @param comparator comparator that will be used for comparison
+	 * @param secondSignal second signal that will be used for comparison
+	 */
+	public Condition(String firstSignal, char comparator, String secondSignal) {
 		this.firstSignal = firstSignal;
-		this.comparator = comporator;
+		this.comparator = comparator;
 		secondSignalString = secondSignal;
 		isConstant = false;
 	}
 	
-	public Condition(String firstSignal, char comporator, int constant) {
+	/**
+	 * Creates new Condition class object with constant as second part in this condition.
+	 * @param firstSignal first signal that will be used for comparison
+	 * @param comparator comparator that will be used for comparison
+	 * @param constant constant that will be used for comparison instead of secondSignal
+	 */
+	public Condition(String firstSignal, char comparator, int constant) {
 		this.firstSignal = firstSignal;
-		this.comparator = comporator;
+		this.comparator = comparator;
 		secondSignalInteger = constant;
 		isConstant = true;
 	}
@@ -24,10 +38,18 @@ public class Condition {
 	
 	private String firstSignal;
 	
+	/**
+	 * Gets first signal in this condition.
+	 * @return Name of first signal. Signals class's constants should be used to compare.
+	 */
 	public String getFirstSignal() {
 		return firstSignal;
 	}
 	
+	/**
+	 * Sets first signal in condition.
+	 * @param signal Signal you want to be first in this condition. Signals class constant's should be used.
+	 */
 	public void setFirstSignal(String signal) {
 		firstSignal = signal; 
 	}
@@ -37,36 +59,74 @@ public class Condition {
 	private int secondSignalInteger;
 	private boolean isConstant;
 	
+	/**
+	 * Returns name of second signal. May return null if second signal is not set. 
+	 * @return Name of second signal. May return null if second signal is not set.
+	 * Signals class's constants should be use to compare.
+	 */
 	public String getSecondSignal() {
 		return secondSignalString;
 	}
 	
+	/**
+	 * Gets constant that is used as second part of this condition
+	 * @return Constant used as second part.
+	 */
 	public int getConstant() {
 		return secondSignalInteger;
 	}
 	
+	/**
+	 * Sets second signal in condition. After calling this method, signal will be used
+	 * as second part in condition.
+	 * @param signal signal you want to be second in this condition. Signals class constant's should be used.
+	 */
 	public void setSecondSignal(String signal) {
 		secondSignalString = signal;
 		isConstant = false;
 	}
 	
+	/**
+	 * Sets second signal in condition. After calling this method, constant will be used
+	 * as second part in condition.
+	 * @param constant Constant you want to be second in this condition.
+	 */
 	public void setSecondSignal(int constant) {
 		secondSignalInteger = constant;
 		isConstant = true;
 	}
 	
+	/**
+	 * Method, that allows you to check if constant will be used in this condition.
+	 * @return "True" if second part of this condition is constant, "false" if second part of this condition is signal
+	 */
 	public boolean isSecondSignalConstant() {
 		return isConstant;
 	}
 	
 	
-	private char comparator = LESS_THAN;
+	private char comparator = COMPARATOR_LESS_THAN;
 	
+	/**
+	 * Return comparator that will be used in this condition.
+	 * @return Condition's comparator.
+	 */
 	public char getComparator() {
 		return comparator;
 	}
 	
+	/** 
+	 * Sets comparator that will be used in this condition.
+	 * @param comparator comparator that will be used in this condition
+	 */
+	public void setComparator(char comparator) {
+		this.comparator = comparator;
+	}
 	
+	/** 
+	 * Returns JSON representation of this condition.
+	 * @return JSON representation of this condition.
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

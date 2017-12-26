@@ -103,7 +103,7 @@ public class ProgrammableSpeaker extends Entity {
 	}
 	
 	public void setPitchSignal(String signal) {
-		enableCondition = new Condition(signal, Condition.MORE_THAN, 0);
+		enableCondition = new Condition(signal, Condition.COMPARATOR_MORE_THAN, 0);
 	}
 	
 	

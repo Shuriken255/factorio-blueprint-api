@@ -4,6 +4,10 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class contains all signals items and fluids that can be used
+ * in circuit conditions, recipes, module requests, logistic requests and more.
+ */
 public class Signals {
 	
 	private static Map<String, String> types;
@@ -12,10 +16,19 @@ public class Signals {
 	public static final String TYPE_VIRTUAL = "virtual";
 	public static final String TYPE_FLUID = "fluid";
 	
+	/**
+	 * Returns type of signal. You should use all constants in this class and inner
+	 * classes for this method.
+	 * @param signal signal you want to know type of.
+	 * @return type of this signal
+	 */
 	public static String getType(String signal) {
 		return types.get(signal);
 	}
 	
+	/**
+	 * Contains all items in 0.16 Factorio version.
+	 */
 	public static class Items {
 		
 		// All belts
@@ -278,7 +291,9 @@ public class Signals {
 		
 	}
 	
-	
+	/**
+	 * Contains all virtual signals in 0.16 Factorio version.
+	 */
 	public static class Virtual {
 		
 		// Numbers
@@ -339,6 +354,9 @@ public class Signals {
 		
 	}
 	
+	/**
+	 * Contains all fluids in 0.16 Factorio version.
+	 */
 	public static class Fluid {
 		
 		public static final String WATER = "water";
