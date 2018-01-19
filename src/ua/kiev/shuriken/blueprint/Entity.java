@@ -176,7 +176,7 @@ public abstract class Entity {
 	 * @param color color of wire you want to use for this connection.
 	 */
 	public void connectTo(Entity entity, int typeFrom, int typeTo, int color) {
-		if(typeFrom == Connection.TYPE_INPUT) {
+		if(typeFrom == Connection.TYPE_INPUT || typeFrom == Connection.TYPE_GENERAL) {
 			if(color == Connection.COLOR_GREEN) {
 				inputGreenConnections.add(new Connection(entity, typeTo));
 				entity.addConnectionWithoutReflection(this, typeTo, typeFrom, color);
@@ -207,9 +207,9 @@ public abstract class Entity {
 			}
 		} else {
 			if(color == Connection.COLOR_GREEN) {
-				inputGreenConnections.add(new Connection(entity, typeTo));
+				outputGreenConnections.add(new Connection(entity, typeTo));
 			} else {
-				inputRedConnections.add(new Connection(entity, typeTo));
+				outputRedConnections.add(new Connection(entity, typeTo));
 			}
 		}
 	}

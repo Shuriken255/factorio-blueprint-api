@@ -17,10 +17,18 @@ public class Accumulator extends Entity {
 	
 	private String outputSignal = Signals.Virtual.SIGNAL_A;
 	
+	/**
+	 * Gets signal that will be used for output current accumulator's charge level
+	 * @return signal
+	 */
 	public String getOutputSignal() {
 		return outputSignal;
 	}
 	
+	/**
+	 * Sets signal that will be used for output current accumulator's charge level
+	 * @param signal signal, that will be used for output.
+	 */
 	public void setOutputSignal(String signal) {
 		outputSignal = signal;
 	}

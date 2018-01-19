@@ -28,10 +28,18 @@ public class TrainStop extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Gets station's enable condition. May return "null" if "enable/disable" function is disabled
+	 * @return condition or "null" if it's disabled
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets station's enable condition or disables it.
+	 * @param condition condition or "null" to disable it.
+	 */
 	public void setEnableCondition(Condition condition) {
 		enableCondition = condition;
 	}
@@ -39,10 +47,18 @@ public class TrainStop extends Entity {
 	
 	private boolean sendSignalsToTrain = true;
 	
+	/**
+	 * Checks if "Send to train" flag is on
+	 * @return state of "Send to train" flag.
+	 */
 	public boolean isSendingSignalsToTrain() {
 		return sendSignalsToTrain;
 	}
 	
+	/**
+	 * Sets "Send to train" flag.
+	 * @param send "true" to enable and "false" to disable
+	 */
 	public void setSendingSignalsToTrain(boolean send) {
 		sendSignalsToTrain = send;
 	}
@@ -50,10 +66,18 @@ public class TrainStop extends Entity {
 	
 	private boolean readTrainsContents = false;
 	
+	/**
+	 * Checks if "Read train contents" flag is on
+	 * @return state of "Read train contents" flag.
+	 */
 	public boolean isReadingTrainsContents() {
 		return readTrainsContents;
 	}
 	
+	/**
+	 * Sets "Read train contents" flag.
+	 * @param send "true" to enable and "false" to disable
+	 */
 	public void setReadingTrainContents(boolean read) {
 		readTrainsContents = read;
 	}
@@ -61,10 +85,18 @@ public class TrainStop extends Entity {
 	
 	private String trainStoppedSignal;
 	
+	/**
+	 * Gets output signal that will be used for stopped train
+	 * @return output signal or "null" if "Read stopped train" flag is off
+	 */
 	public String getTrainStoppedSignal() {
 		return trainStoppedSignal;
 	}
 	
+	/**
+	 * Sets output signal that will be used for stopped train or disable this function
+	 * @param signal output signal or "null" to disable "Read stopped train" flag
+	 */
 	public void setTrainStoppedSignal(String signal) {
 		trainStoppedSignal = signal;
 	}
@@ -127,7 +159,7 @@ public class TrainStop extends Entity {
 	}
 	
 	
-	private String stationName = "No name";
+	private String stationName;
 	
 	public String getStationName() {
 		return stationName;
@@ -140,12 +172,14 @@ public class TrainStop extends Entity {
 	
 	@Override
 	protected String advancedSetupToString() {
-		StringBuilder sb = new StringBuilder();
+		if(stationName == null) {
+			return null;
+		}
 		
+		StringBuilder sb = new StringBuilder();
 		sb.append("\"station\":\"");
 		sb.append(stationName);
 		sb.append("\"");
-		
 		return sb.toString();
 	}
 	

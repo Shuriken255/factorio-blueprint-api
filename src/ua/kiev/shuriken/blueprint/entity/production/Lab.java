@@ -18,6 +18,10 @@ public class Lab extends Entity {
 	
 	private ModuleRequest modules = new ModuleRequest();
 	
+	/**
+	 * Gets module requests for this machine.
+	 * @return module requests
+	 */
 	public ModuleRequest getModuleRequests() {
 		return modules;
 	}

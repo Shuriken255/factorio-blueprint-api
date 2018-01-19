@@ -47,11 +47,17 @@ public class ArithmeticCombinator extends Entity {
 		return Signals.Items.ARITHMETIC_COMBINATOR;
 	}
 	
-	
+	/**
+	 * This class describes each term in arithmetic combinator.
+	 */
 	public static class Term {
 		
 		private boolean isConstant;
 		
+		/**
+		 * Returns "true" if term uses constant and "false" if term uses a signal.
+		 * @return "True" if term uses constant and "false" if term uses a signal.
+		 */
 		public boolean isConstant() {
 			return isConstant;
 		}
@@ -59,10 +65,19 @@ public class ArithmeticCombinator extends Entity {
 		
 		private String signal;
 		
+		/**
+		 * Returns signal that uses in this term.
+		 * @return Signal that uses in this term.
+		 */
 		public String getSignal() {
 			return signal;
 		}
 		
+		/**
+		 * Sets signal that this term will be using.
+		 * If you call this method, term will use signal instead of constant.
+		 * @param signal signal you want to set for this term.
+		 */
 		public void setSignal(String signal) {
 			this.signal = signal;
 			isConstant = false;
@@ -71,10 +86,19 @@ public class ArithmeticCombinator extends Entity {
 		
 		private int constant;
 		
+		/**
+		 * Returns constant that uses in this term.
+		 * @return Constant that uses in this term.
+		 */
 		public int getConstant() {
 			return constant;
 		}
 		
+		/**
+		 * Sets constant that this term will be using.
+		 * If you call this method, term will use constant instead of signal.
+		 * @param constant signal you want to set for this term.
+		 */
 		public void setConstant(int constant) {
 			this.constant = constant;
 			isConstant = true;
@@ -95,10 +119,18 @@ public class ArithmeticCombinator extends Entity {
 	
 	private Term firstTerm;
 	
+	/**
+	 * Returns first term.
+	 * @return First term.
+	 */
 	public Term getFirstTerm() {
 		return firstTerm;
 	}
 	
+	/**
+	 * Sets first term.
+	 * @param term term.
+	 */
 	public void setFirstTerm(Term term) {
 		firstTerm = term;
 	}
@@ -106,10 +138,18 @@ public class ArithmeticCombinator extends Entity {
 	
 	private Term secondTerm;
 	
+	/**
+	 * Return second term.
+	 * @param second term.
+	 */
 	public Term getSecondTerm() {
 		return secondTerm;
 	}
 	
+	/**
+	 * Sets second term.
+	 * @param term term.
+	 */
 	public void setSecondTerm(Term term) {
 		secondTerm = term;
 	}
@@ -117,10 +157,18 @@ public class ArithmeticCombinator extends Entity {
 	
 	private String operation = OPERATION_PLUS;
 	
+	/**
+	 * Returns operation that will be used between two terms.
+	 * @return Operation that will be used between two terms.
+	 */
 	public String getOperation() {
 		return operation;
 	}
 	
+	/**
+	 * Sets operation that will be used between two terms.
+	 * @param operation operation that will be used between two terms.
+	 */
 	public void setOperation(String operation) {
 		this.operation = operation;
 	}
@@ -128,10 +176,18 @@ public class ArithmeticCombinator extends Entity {
 	
 	private String outputSignal;
 	
+	/**
+	 * Returns output signal.
+	 * @return output signal.
+	 */
 	public String getOutputSignal() {
 		return outputSignal;
 	}
 	
+	/**
+	 * Sets output signal.
+	 * @param signal output signal.
+	 */
 	public void setOutputSignal(String signal) {
 		outputSignal = signal;
 	}

@@ -1,5 +1,6 @@
 package ua.kiev.shuriken.blueprint.entity.logistics;
 
+import ua.kiev.shuriken.blueprint.BlueprintException;
 import ua.kiev.shuriken.blueprint.Condition;
 import ua.kiev.shuriken.blueprint.Entity;
 import ua.kiev.shuriken.blueprint.Signals;
@@ -44,22 +45,23 @@ public class ProgrammableSpeaker extends Entity {
 	public static final int MISCELLANEOUS_RESEARCH_COMPLETED = 14;
 	public static final int MISCELLANEOUS_SCENARIO_MESSAGE = 15;
 	
-	public static final int DRUMKIT_KICK_1 = 0;
-	public static final int DRUMKIT_KICK_2 = 1;
-	public static final int DRUMKIT_SNARE_1 = 2;
-	public static final int DRUMKIT_SNARE_2 = 3;
-	public static final int DRUMKIT_SNARE_3 = 4;
-	public static final int DRUMKIT_HI_HAT_1 = 5;
-	public static final int DRUMKIT_HI_HAT_2 = 6;
-	public static final int DRUMKIT_FX = 7;
-	public static final int DRUMKIT_HIGH_Q = 8;
-	public static final int DRUMKIT_PERCUSSION_1 = 9;
-	public static final int DRUMKIT_PERCUSSION_2 = 10;
-	public static final int DRUMKIT_REVERSE_CYMBAL = 11;
-	public static final int DRUMKIT_CLAP = 12;
-	public static final int DRUMKIT_SHAKER = 13;
-	public static final int DRUMKIT_COWBELL = 14;
-	public static final int DRUMKIT_TRIANGLE = 15;
+	public static final int DRUMKIT_KICK_1 = 1;
+	public static final int DRUMKIT_KICK_2 = 2;
+	public static final int DRUMKIT_SNARE_1 = 3;
+	public static final int DRUMKIT_SNARE_2 = 4;
+	public static final int DRUMKIT_SNARE_3 = 5;
+	public static final int DRUMKIT_HI_HAT_1 = 6;
+	public static final int DRUMKIT_HI_HAT_2 = 7;
+	public static final int DRUMKIT_FX = 8;
+	public static final int DRUMKIT_HIGH_Q = 9;
+	public static final int DRUMKIT_PERCUSSION_1 = 10;
+	public static final int DRUMKIT_PERCUSSION_2 = 11;
+	public static final int DRUMKIT_CRASH = 12;
+	public static final int DRUMKIT_REVERSE_CYMBAL = 13;
+	public static final int DRUMKIT_CLAP = 14;
+	public static final int DRUMKIT_SHAKER = 15;
+	public static final int DRUMKIT_COWBELL = 16;
+	public static final int DRUMKIT_TRIANGLE = 17;
 	
 
 	public ProgrammableSpeaker(float x, float y) {
@@ -74,10 +76,18 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Returns enable condition or "null" if enable condition wasn't set before.
+	 * @return enable condition or "null" if enable condition wasn't set before.
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable condition for this programmable speaker.
+	 * @param condition enable condition you want to set for this programmable speaker.
+	 */
 	public void setEnableCondition(Condition condition) {
 		enableCondition = condition;
 	}
@@ -85,15 +95,27 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private boolean signalValueIsPitch;
 	
+	/**
+	 * Returns "true" if "Signal value is pitch" mode is on and "false" if not.
+	 * @return "true" if "Signal value is pitch" mode is on and "false" if not.
+	 */
 	public boolean isSignalValueIsPitchMode() {
 		return signalValueIsPitch;
 	}
 	
+	/**
+	 * Enables/disables "Signal value is pitch" mode.
+	 * @param mode "true" if you want to enable it or "false" if you want to disable it.
+	 */
 	public void setSignalValueIsPitchMode(boolean mode) {
 		signalValueIsPitch = mode;
 	}
 	
-	
+	/**
+	 * Returns signal that will be used for "Signal value is pitch" mode or "null"
+	 * if signal wasn't set yet.
+	 * @return signal used for "Signal value is pitch" or "null".
+	 */
 	public String getPitchSignal() {
 		if(enableCondition == null) {
 			return null;
@@ -102,6 +124,11 @@ public class ProgrammableSpeaker extends Entity {
 		}
 	}
 	
+	/**
+	 * Sets signal for "Signal value is pitch" mode. Overrides enable condition with
+	 * next condition: "your signal > 0".
+	 * @param signal
+	 */
 	public void setPitchSignal(String signal) {
 		enableCondition = new Condition(signal, Condition.COMPARATOR_MORE_THAN, 0);
 	}
@@ -109,10 +136,18 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private int instrumentID;
 	
+	/**
+	 * Returns instrument's id. Use "INSTRUMENT_" constants of this class.
+	 * @return Instrument's id
+	 */
 	public int getInstrumentID() {
 		return instrumentID;
 	}
 	
+	/**
+	 * Sets instrument's id. You can use "INTRUMENT_" constants of this class.
+	 * @param id instrument's id.
+	 */
 	public void setInstrumentID(int id) {
 		instrumentID = id;
 	}
@@ -120,10 +155,18 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private int noteID;
 	
+	/**
+	 * Returns note's id that will be used for this programmable speaker.
+	 * @return Note's id.
+	 */
 	public int getNoteID() {
 		return noteID;
 	}
 	
+	/**
+	 * Sets note's id that will be used for this programmable speaker.
+	 * @param id note's id.
+	 */
 	public void setNoteID(int id) {
 		noteID = id;
 	}
@@ -156,21 +199,44 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private float playbackVolume = 1f;
 	
+	/**
+	 * Gets volume of current speaker.
+	 * @return Volume value from "0" to "1"
+	 */
 	public float getVolume() {
 		return playbackVolume;
 	}
 	
+	/**
+	 * Sets volume of current speaker. Throws BlueprintException if value will be
+	 * higher than "1" and lower than "0".
+	 * @param volume
+	 * @throws BlueprintException
+	 */
 	public void setVolume(float volume) {
+		if(volume < 0) {
+			throw new BlueprintException("Programmable speaker's volume can't be lower than \"0\"");
+		} else if(volume > 1) {
+			throw new BlueprintException("Programmable speaker's volume can't be higher than \"1\"");
+		}
 		playbackVolume = volume;
 	}
 	
 	
 	private boolean playGlobally;
 	
+	/**
+	 * Returns state of "playing globally" flag.
+	 * @return "true" if "playing globally" flag is toggled and "false" if not.
+	 */
 	public boolean isPlayingGlobally() {
 		return playGlobally;
 	}
 	
+	/**
+	 * Sets "playing globally" flag.
+	 * @param play "true" to enable and "false" to disable.
+	 */
 	public void setGlobalPlay(boolean play) {
 		playGlobally = play;
 	}
@@ -178,10 +244,18 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private boolean allowPolyphony;
 	
+	/**
+	 * Returns state of "allow polyphony" flag.
+	 * @return "true" if "allow polyphony" flag is toggled and "false" if not.
+	 */
 	public boolean isAllowingPolyphony() {
 		return allowPolyphony;
 	}
 	
+	/**
+	 * Sets "polyphony" flag.
+	 * @param play "true" to enable and "false" to disable.
+	 */
 	public void setAllowingPolyphony(boolean allow) {
 		allowPolyphony = allow;
 	}
@@ -225,10 +299,18 @@ public class ProgrammableSpeaker extends Entity {
 	
 	private Alert alert;
 	
+	/**
+	 * Returns alert used by this programmable speaker or "null" if alert is disabled
+	 * @return Alert used by this programmable speaker or "null" if alert is disabled.
+	 */
 	public Alert getAlert() {
 		return alert;
 	}
 	
+	/**
+	 * Sets alert used by this programmable speaker or disables it.
+	 * @param alert alert you want to use or "null" if you want to disable it.
+	 */
 	public void setAlert(Alert alert) {
 		this.alert = alert;
 	}

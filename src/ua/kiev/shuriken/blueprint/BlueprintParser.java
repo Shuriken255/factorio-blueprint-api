@@ -80,4 +80,35 @@ public class BlueprintParser {
 		}
 	}
 	
+	public static String oneLineJSONToNormalJSON(String blueprint) {
+		StringBuilder sb = new StringBuilder();
+		int currentTab = 0;
+		for(int i = 0; i < blueprint.length(); i++) {
+			char c = blueprint.charAt(i);
+			if (c == '{') {
+				currentTab++;
+				sb.append("{\n");
+				for(int j = 0; j < currentTab*4; j++) {
+					sb.append(' ');
+				}
+			} else if (c == '}') {
+				currentTab--;
+				sb.append("\n");
+				for(int j = 0; j < currentTab*4; j++) {
+					sb.append(' ');
+				}
+				sb.append('}');
+			} else if (c == ',') {
+				sb.append(",\n");
+				for(int j = 0; j < currentTab*4; j++) {
+					sb.append(' ');
+				}
+			} else {
+				sb.append(c);
+			}
+		}
+		
+		return sb.toString();
+	}
+	
 }

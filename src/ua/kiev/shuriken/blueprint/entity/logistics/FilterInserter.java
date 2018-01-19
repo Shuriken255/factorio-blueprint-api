@@ -20,10 +20,18 @@ public class FilterInserter extends Inserter {
 	
 	private boolean setFiltersFromSignals;
 	
+	/**
+	 * Returns "true" if this filter sets filters depends on signals from circuit network.
+	 * @return "true" if this filter sets filters depends on signals from circuit network and "false" if not.
+	 */
 	public boolean isSettingFiltersFromSignals() {
 		return setFiltersFromSignals;
 	}
 	
+	/**
+	 * When set to "true" ignores it's filters and set filters depends on signal from circuit network. 
+	 * @param setFiltersFromSignals
+	 */
 	public void setFiltersFromSignals(boolean setFiltersFromSignals) {
 		this.setFiltersFromSignals = setFiltersFromSignals;
 	}
@@ -67,14 +75,28 @@ public class FilterInserter extends Inserter {
 	
 	private String[] filters = new String[5];
 	
+	/**
+	 * Gets filter at certain index
+	 * @param filter that is set for this filter inserter or "null" if certain index doesn't have it
+	 * @return
+	 */
 	public String getFilter(int index) {
 		return filters[index];
 	}
 	
+	/**
+	 * Sets filter at certain index
+	 * @param index index
+	 * @param filter filter that will be set at certain index or "null" if you want to remove it
+	 */
 	public void setFilter(int index, String signal) {
 		filters[index] = signal;
 	}
 	
+	/**
+	 * Checks if filters are empty
+	 * @return "false" if at least one filter exists or "true" if not
+	 */
 	public boolean areFiltersEmpty() {
 		for(int i = 0; i < 5; i++) {
 			if(filters[i] != null) {

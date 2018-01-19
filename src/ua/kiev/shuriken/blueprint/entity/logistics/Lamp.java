@@ -17,10 +17,18 @@ public class Lamp extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Returns enable condition. If enable condition is disabled, returns "null".
+	 * @return Enable condition or "null" if it is disabled.
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets or disables enable condition.
+	 * @param condition enable condition or "null" to disable.
+	 */
 	public void setEnableCondition(Condition condition) {
 		enableCondition = condition;
 	}
@@ -28,10 +36,18 @@ public class Lamp extends Entity {
 	
 	private boolean usingColors;
 	
+	/**
+	 * Returns "using colors" flag.
+	 * @return "True" if "using colors" flag enabled or "false" if not.
+	 */
 	public boolean isUsingColors() {
 		return usingColors;
 	}
 	
+	/**
+	 * Sets "using colors" flag.
+	 * @param usingColors "true" to enable flag and "false" to disable.
+	 */
 	public void setUsingColors(boolean usingColors) {
 		this.usingColors = usingColors;
 	}

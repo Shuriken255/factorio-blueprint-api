@@ -27,10 +27,18 @@ public class RailChainSignal extends Entity {
 	
 	private String redSignal = Signals.Virtual.SIGNAL_RED;
 	
+	/**
+	 * Gets circuit signal for output when rail chain signal is red.
+	 * @return Circuit signal used for output in circuit network.
+	 */
 	public String getRedSignal() {
 		return redSignal;
 	}
 	
+	/**
+	 * Sets circuit signal for output when rail chain signal is red.
+	 * @param signal signal for circuit output.
+	 */
 	public void setRedSignal(String signal) {
 		redSignal = signal;
 	}
@@ -38,10 +46,18 @@ public class RailChainSignal extends Entity {
 	
 	private String yellowSignal = Signals.Virtual.SIGNAL_YELLOW;
 	
+	/**
+	 * Gets circuit signal for output when rail chain signal is yellow.
+	 * @return Circuit signal used for output in circuit network.
+	 */
 	public String getYellowSignal() {
 		return yellowSignal;
 	}
 	
+	/**
+	 * Sets circuit signal for output when rail chain signal is yellow.
+	 * @param signal signal for circuit output.
+	 */
 	public void setYellowSignal(String signal) {
 		yellowSignal = signal;
 	}
@@ -49,10 +65,18 @@ public class RailChainSignal extends Entity {
 	
 	private String greenSignal = Signals.Virtual.SIGNAL_GREEN;
 	
+	/**
+	 * Gets circuit signal for output when rail chain signal is green.
+	 * @return Circuit signal used for output in circuit network.
+	 */
 	public String getGreenSignal() {
 		return greenSignal;
 	}
 	
+	/**
+	 * Sets circuit signal for output when rail chain signal is green.
+	 * @param signal signal for circuit output.
+	 */
 	public void setGreenSignal(String signal) {
 		greenSignal = signal;
 	}
@@ -60,10 +84,18 @@ public class RailChainSignal extends Entity {
 	
 	private String blueSignal = Signals.Virtual.SIGNAL_BLUE;
 	
+	/**
+	 * Gets circuit signal for output when rail chain signal is blue.
+	 * @return Circuit signal used for output in circuit network.
+	 */
 	public String getBlueSignal() {
 		return blueSignal;
 	}
 	
+	/**
+	 * Sets circuit signal for output when rail chain signal is blue.
+	 * @param signal signal for circuit output.
+	 */
 	public void setBlueSignal(String signal) {
 		blueSignal = signal;
 	}

@@ -18,6 +18,10 @@ public class Beacon extends Entity {
 	
 	private ModuleRequest modules = new ModuleRequest();
 	
+	/**
+	 * Gets module request for this beacon
+	 * @return module request
+	 */
 	public ModuleRequest getModuleRequests() {
 		return modules;
 	}

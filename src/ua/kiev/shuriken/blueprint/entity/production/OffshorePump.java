@@ -28,12 +28,20 @@ public class OffshorePump extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Gets enable/disable condition. May return "null" if this function is disabled.
+	 * @return enable condition or "null"
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable/disable condition or disables this function.
+	 * @param condition enable condition or "null" to disable it
+	 */
 	public void setEnableCondition(Condition condition) {
-		enableCondition = condition;
+		this.enableCondition = condition;
 	}
 	
 	

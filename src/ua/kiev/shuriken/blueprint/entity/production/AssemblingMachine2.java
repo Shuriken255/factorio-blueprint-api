@@ -28,6 +28,10 @@ public class AssemblingMachine2 extends AssemblingMachine1 {
 	
 	private ModuleRequest modules = new ModuleRequest();
 	
+	/**
+	 * Gets module request for this machine
+	 * @return module request
+	 */
 	public ModuleRequest getModuleRequests() {
 		return modules;
 	}

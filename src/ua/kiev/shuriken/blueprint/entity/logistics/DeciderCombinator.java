@@ -32,10 +32,18 @@ public class DeciderCombinator extends Entity {
 	
 	private Condition condition;
 	
+	/**
+	 * Returns condition that will be used in this decider combinator.
+	 * @return Condition that will be used in this decider combinator.
+	 */
 	public Condition getCondition() {
 		return condition;
 	}
 	
+	/**
+	 * Allows you to set condition for this decider combinator.
+	 * @param condition condition you want to set for this decider combinator.
+	 */
 	public void setCondition(Condition condition) {
 		this.condition = condition;
 	}
@@ -43,10 +51,18 @@ public class DeciderCombinator extends Entity {
 	
 	private String outputSignal;
 	
+	/**
+	 * Returns output signal of this decider combinator.
+	 * @return Output signal of this decider combinator.
+	 */
 	public String getOutputSignal() {
 		return outputSignal;
 	}
 	
+	/**
+	 * Allows you to set signal that this decider combinator will use for output
+	 * @param signal signal, you want this decider combinator to use for output
+	 */
 	public void setOutputSignal(String signal) {
 		outputSignal = signal;
 	}
@@ -54,10 +70,20 @@ public class DeciderCombinator extends Entity {
 	
 	private boolean copyCountFromInput = false;
 	
+	/**
+	 * Returns "true" if decider copies signal's value from input to output
+	 * and "false" if output should be "1".
+	 * @return "True" if decider copies signal's value from input to output
+	 * and "false" if output should be "1".
+	 */
 	public boolean isCopyingCountFromInput() {
 		return copyCountFromInput;
 	}
 	
+	/**
+	 * Sets if decider should copy output to input or not.
+	 * @param copy "true" if it should and "false" if output should be "1".
+	 */
 	public void setCopyingCountFromInput(boolean copy) {
 		copyCountFromInput = copy;
 	}

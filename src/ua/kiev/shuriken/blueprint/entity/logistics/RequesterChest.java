@@ -18,10 +18,18 @@ public class RequesterChest extends Entity {
 		
 		private String item;
 		
+		/**
+		 * Gets item that will be requested
+		 * @return
+		 */
 		public String getItem() {
 			return item;
 		}
 		
+		/**
+		 * Sets item for request
+		 * @param item item's signal
+		 */
 		public void setItem(String item) {
 			this.item = item;
 		}
@@ -29,12 +37,20 @@ public class RequesterChest extends Entity {
 		
 		private int count;
 		
-		public int getCount() {
+		/**
+		 * Gets request's amount
+		 * @return amount
+		 */
+		public int getAmount() {
 			return count;
 		}
 		
-		public void setCount(int count) {
-			this.count = count;
+		/**
+		 * Sets requests's amount
+		 * @param amount amount of items for request
+		 */
+		public void setAmount(int amount) {
+			this.count = amount;
 		}
 		
 		
@@ -47,14 +63,28 @@ public class RequesterChest extends Entity {
 	
 	private Request[] requests = new Request[12];
 	
+	/**
+	 * Gets request at certain index
+	 * @param index index of request
+	 * @return Request at certain index or "null if request is not set for current index
+	 */
 	public Request getRequest(int index) {
 		return requests[index];
 	}
 	
+	/**
+	 * Sets request at certain index or removes it
+	 * @param index index of request
+	 * @param request request for current position or "null" if you want to clear it.
+	 */
 	public void setRequest(int index, Request request) {
 		requests[index] = request;
 	}
 	
+	/**
+	 * Checks if requester chests contains at least one request
+	 * @return "true" if chest contains at least one request and "false" if not.
+	 */
 	public boolean isContainingRequests() {
 		for(int i = 0; i < 12; i++) {
 			if(requests[i] != null) {
@@ -94,10 +124,18 @@ public class RequesterChest extends Entity {
 	
 	private boolean setRequestsFromSignal;
 	
+	/**
+	 * Checks if requester chest sets requests depends of signals from circuit network
+	 * @return
+	 */
 	public boolean isSettingRequestsFromSignal() {
 		return setRequestsFromSignal;
 	}
 	
+	/**
+	 * Sets if requester chests should set signals from circuit network or not
+	 * @param setRequestsFromSignal "true" to enable "set contents" option and "false" to disable
+	 */
 	public void setSettingRequestsFromSignal(boolean setRequestsFromSignal) {
 		this.setRequestsFromSignal = setRequestsFromSignal;
 	}

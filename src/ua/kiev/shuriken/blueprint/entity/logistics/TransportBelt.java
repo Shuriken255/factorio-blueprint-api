@@ -32,10 +32,18 @@ public class TransportBelt extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Gets enable condition. May return "null" if "enable/disable" function is turned off.
+	 * @return condition or "null"
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable condition or disables it.
+	 * @param condition enable condition or "null" to disable "enable/disable" function
+	 */
 	public void setEnableCondition(Condition condition) {
 		this.enableCondition = condition;
 	}
@@ -43,10 +51,18 @@ public class TransportBelt extends Entity {
 	
 	private int readMode = READ_MODE_NONE;
 	
+	/**
+	 * Gets read mode for this belt. Use "READ_" constants of this class to compare.
+	 * @return read mode
+	 */
 	public int getReadMode() {
 		return readMode;
 	}
 	
+	/**
+	 * Sets read mode for this belt.
+	 * @param readMode read mode. Use "READ_" constants of this class
+	 */
 	public void setReadMode(int readMode) {
 		this.readMode = readMode;
 	}

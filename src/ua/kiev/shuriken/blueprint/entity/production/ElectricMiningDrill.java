@@ -33,10 +33,18 @@ public class ElectricMiningDrill extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Gets enable/disable condition. May return "null" if this function is disabled.
+	 * @return enable condition or "null"
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable/disable condition or disables this function.
+	 * @param condition enable condition or "null" to disable it
+	 */
 	public void setEnableCondition(Condition condition) {
 		this.enableCondition = condition;
 	}
@@ -44,10 +52,18 @@ public class ElectricMiningDrill extends Entity {
 	
 	private int readMode;
 	
+	/**
+	 * Gets read mode for this mining drill.
+	 * @return read mode. Use "READ_MODE_" constants of this class to compare.
+	 */
 	public int getReadMode() {
 		return readMode;
 	}
 	
+	/**
+	 * Sets read mode for this mining drill.
+	 * @param mode read mode. Use "READ_MODE_" constants of this class for this argument.
+	 */
 	public void setReadMode(int mode) {
 		readMode = mode;
 	}
@@ -87,6 +103,10 @@ public class ElectricMiningDrill extends Entity {
 	
 	private ModuleRequest modules = new ModuleRequest();
 	
+	/**
+	 * Gets this machine's module request.
+	 * @return module request
+	 */
 	public ModuleRequest getModuleRequests() {
 		return modules;
 	}

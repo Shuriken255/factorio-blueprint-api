@@ -28,10 +28,20 @@ public class RailSignal extends Entity {
 	
 	private String redSignal = Signals.Virtual.SIGNAL_RED;
 	
+	/**
+	 * Returns signal that will be used as output when signal is red.
+	 * Signals class's constants should be used to compare.
+	 * @return Signal that will be used as output when signal is red
+	 */
 	public String getRedSignal() {
 		return redSignal;
 	}
 	
+	/**
+	 * Sets signal that will be used as output when signal is red.
+	 * Signals class's constants should be used.
+	 * @param signal
+	 */
 	public void setRedSignal(String signal) {
 		redSignal = signal;
 	}
@@ -39,6 +49,11 @@ public class RailSignal extends Entity {
 	
 	private String yellowSignal = Signals.Virtual.SIGNAL_YELLOW;
 	
+	/**
+	 * Returns signal that will be used as output when signal is yellow.
+	 * Signals class's constants should be used to compare.
+	 * @return Signal that will be used as output when signal is yellow.
+	 */
 	public String getYellowSignal() {
 		return yellowSignal;
 	}
@@ -50,6 +65,11 @@ public class RailSignal extends Entity {
 	
 	private String greenSignal = Signals.Virtual.SIGNAL_GREEN;
 	
+	/**
+	 * Returns signal that will be used as output when signal is green.
+	 * Signals class's constants should be used to compare.
+	 * @return Signal that will be used as output when signal is green.
+	 */
 	public String getGreenSignal() {
 		return greenSignal;
 	}
@@ -61,10 +81,18 @@ public class RailSignal extends Entity {
 	
 	private boolean readSignal = true;
 	
+	/**
+	 * Returns if rail signal will output signals depends of it's color
+	 * @return "true" if rail signal outputs signal and "false" if not
+	 */
 	public boolean isReadingSignal() {
 		return readSignal;
 	}
 	
+	/**
+	 * Sets rail signal's read mode
+	 * @param read "true" if rail signal should output signals into circuit network and "false" if not
+	 */
 	public void setReadingSignal(boolean read) {
 		readSignal = read;
 	}
@@ -72,10 +100,18 @@ public class RailSignal extends Entity {
 	
 	private Condition closeCondition;
 	
+	/**
+	 * Returns close condition of rail signal or "null" if it is disabled.
+	 * @param close condition or "null" if it is disabled
+	 */
 	public Condition getCloseCondition() {
 		return closeCondition;
 	}
 	
+	/**
+	 * Sets rail signal's close condition or disables it.
+	 * @param condition condition that sets rail signal to red or "null" to disable it.
+	 */
 	public void setCloseCondition(Condition condition) {
 		closeCondition = condition;
 	}

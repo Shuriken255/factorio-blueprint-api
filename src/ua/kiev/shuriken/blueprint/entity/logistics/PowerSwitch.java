@@ -18,10 +18,18 @@ public class PowerSwitch extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Gets enable condition. May return "null" if condition wasn't set yet.
+	 * @return
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable condition for power switch.
+	 * @param condition enable condition you want to set for power switch.
+	 */
 	public void setEnableCondition(Condition condition) {
 		enableCondition = condition;
 	}

@@ -27,6 +27,4 @@ public class CurvedRail extends Entity {
 		return "curved-rail";
 	}
 	
-	
-	
 }

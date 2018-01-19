@@ -32,10 +32,19 @@ public class Inserter extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Returns enable condition used for this inserter. May return "null" if enable/disable function is off.
+	 * @return Enable condition or "null" if it doesn't exist. 
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable condition for inserter. If condition is null, enable/disable function
+	 * will be off. In case if condition is not null, enable/disable function will be on.
+	 * @param condition condition on which inserter should work.
+	 */
 	public void setEnableCondition(Condition condition) {
 		enableCondition = condition;
 	}
@@ -43,10 +52,18 @@ public class Inserter extends Entity {
 	
 	private int readMode = READ_MODE_NONE;
 	
+	/**
+	 * Returns inserter's content read mode. Inserter's constants should be used to compare.
+	 * @return Inserter's content read mode.
+	 */
 	public int getReadMode() {
 		return readMode;
 	}
 	
+	/**
+	 * Sets inserter's content read mode.
+	 * @param readMode read mode. Constants from Inserter's class should be used for this parameter.
+	 */
 	public void setReadMode(int readMode) {
 		this.readMode = readMode;
 	}
@@ -54,10 +71,19 @@ public class Inserter extends Entity {
 	
 	private String stackSizeSignal;
 	
+	/**
+	 * Returns signal, that inserter will use to override it's stack size. May return "null" if function is disabled.
+	 * @return Signal, used for overriding or "null" if override function is disabled.
+	 */
 	public String getStackSizeSignal() {
 		return stackSizeSignal;
 	}
 	
+	/**
+	 * Sets signal that will be used for setting stack size of inserter.
+	 * Setting it to null will disable setting stack size depends of signal.
+	 * @param signal signal you want to set stack size from
+	 */
 	public void setStackSizeSignal(String signal) {
 		stackSizeSignal = signal;
 	}
@@ -99,10 +125,18 @@ public class Inserter extends Entity {
 	
 	private int overrideStackSize = 0;
 	
+	/**
+	 * Returns inserter's stack size. May return "0" if stack size override is disabled.
+	 * @return Inserter's overridden stack size or "0" if this function is disabled.
+	 */
 	public int getOverrideStackSize() {
 		return overrideStackSize;
 	}
 	
+	/**
+	 * Sets override stack size. Setting it on "0" disables it.
+	 * @param size stack size.
+	 */
 	public void setOverrideStackSize(int size) {
 		overrideStackSize = size;
 	}

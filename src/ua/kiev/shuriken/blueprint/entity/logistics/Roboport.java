@@ -21,10 +21,18 @@ public class Roboport extends Entity {
 	
 	private int mode = MODE_READ_LOGISTICS_CONTENTS;
 	
+	/**
+	 * Returns read mode of roboport. Use "MODE_" constants to compare.
+	 * @return read mode
+	 */
 	public int getMode() {
 		return mode;
 	}
 	
+	/**
+	 * Sets Use "MODE_" contents to compare.
+	 * @param mode mode to be set for Roboport. Use "MODE_" constants for this variable.
+	 */
 	public void setMode(int mode) {
 		this.mode = mode;
 	}
@@ -32,10 +40,18 @@ public class Roboport extends Entity {
 	
 	private String availableLogisticOutputSignal = Signals.Virtual.SIGNAL_X;
 	
+	/**
+	 * Returns output signal that will be used for available logistic robot count.
+	 * @return signal
+	 */
 	public String getAvailableLogisticOutputSignal() {
 		return availableLogisticOutputSignal;
 	}
 	
+	/**
+	 * Sets output signal that will be used for available logistic robot count.
+	 * @param signal signal. Use Signals class's constants for this variable.
+	 */
 	public void setAvialableLogisticOutputSignal(String signal) {
 		availableLogisticOutputSignal = signal;
 	}
@@ -43,10 +59,18 @@ public class Roboport extends Entity {
 	
 	private String totalLogisticOutputSignal = Signals.Virtual.SIGNAL_Y;
 	
+	/**
+	 * Returns output signal that will be used for total logistic robot count.
+	 * @return signal
+	 */
 	public String getTotalLogisticOutputSignal() {
 		return totalLogisticOutputSignal;
 	}
 	
+	/**
+	 * Sets output signal that will be used for total logistic robot count.
+	 * @param signal signal. Use Signals class's constants for this variable.
+	 */
 	public void setTotalLogisticOutputSignal(String signal) {
 		totalLogisticOutputSignal = signal;
 	}
@@ -54,10 +78,18 @@ public class Roboport extends Entity {
 	
 	private String availableConstructionOutputSignal = Signals.Virtual.SIGNAL_Z;
 	
+	/**
+	 * Returns output signal that will be used for available construction robot count.
+	 * @return signal
+	 */
 	public String getAvailableConstructionOutputSignal() {
 		return availableConstructionOutputSignal;
 	}
 	
+	/**
+	 * Sets output signal that will be used for available construction robot count.
+	 * @param signal signal. Use Signals class's constants for this variable.
+	 */
 	public void setAvialableConstructionOutputSignal(String signal) {
 		availableConstructionOutputSignal = signal;
 	}
@@ -65,10 +97,18 @@ public class Roboport extends Entity {
 	
 	private String totalConstructionOutputSignal = Signals.Virtual.SIGNAL_T;
 	
+	/**
+	 * Returns output signal that will be used for total construction robot count.
+	 * @return signal
+	 */
 	public String getTotalConstructionOutputSignal() {
 		return totalConstructionOutputSignal;
 	}
 	
+	/**
+	 * Sets output signal that will be used for total construction robot count.
+	 * @param signal signal. Use Signals class's constants for this variable.
+	 */
 	public void setTotalConstructionOutputSignal(String signal) {
 		totalConstructionOutputSignal = signal;
 	}

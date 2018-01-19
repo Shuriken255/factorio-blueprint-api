@@ -28,10 +28,18 @@ public class Pump extends Entity {
 	
 	private Condition enableCondition;
 	
+	/**
+	 * Returns enable condition used by this pump.
+	 * @return Enable condition or "null" if enable condition wasn't set yet.
+	 */
 	public Condition getEnableCondition() {
 		return enableCondition;
 	}
 	
+	/**
+	 * Sets enable condition used by this pump.
+	 * @param condition enable condition you want to use.
+	 */
 	public void setEnableCondition(Condition condition) {
 		enableCondition = condition;
 	}

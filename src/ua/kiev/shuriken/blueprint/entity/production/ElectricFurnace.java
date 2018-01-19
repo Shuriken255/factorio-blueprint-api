@@ -17,6 +17,10 @@ public class ElectricFurnace extends SteelFurnace {
 	
 	private ModuleRequest modules = new ModuleRequest();
 	
+	/**
+	 * Gets module request of this machine
+	 * @return module request
+	 */
 	public ModuleRequest getModuleRequests() {
 		return modules;
 	}

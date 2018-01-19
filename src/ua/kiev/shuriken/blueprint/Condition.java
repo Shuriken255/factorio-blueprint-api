@@ -60,8 +60,8 @@ public class Condition {
 	private boolean isConstant;
 	
 	/**
-	 * Returns name of second signal. May return null if second signal is not set. 
-	 * @return Name of second signal. May return null if second signal is not set.
+	 * Returns name of second signal. May return null if second signal is not set.
+	 * @return Name of second signal or "null" if second signal is not set.
 	 * Signals class's constants should be use to compare.
 	 */
 	public String getSecondSignal() {

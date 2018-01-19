@@ -27,10 +27,18 @@ public class UndergroundBelt extends Entity {
 	
 	private int type;
 	
+	/**
+	 * Gets type of this belt. Use "INPUT" and "OUTPUT" constants to compare
+	 * @return type
+	 */
 	public int getType() {
 		return type;
 	}
 	
+	/**
+	 * Sets type of this belt. Use "INPUT" and "OUTPUT" constants to compare
+	 * @param type. Use "INPUT" and "OUTPUT" constants for this argument.
+	 */
 	public void setType(int type) {
 		this.type = type;
 	}
