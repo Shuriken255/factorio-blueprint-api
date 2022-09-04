@@ -351,6 +351,11 @@ public class Signals {
 		public static final String SIGNAL_ANYTHING = "signal-anything";
 		public static final String SIGNAL_EVERYTHING = "signal-everything";
 		public static final String SIGNAL_EACH = "signal-each";
+
+		//Special
+		public static final String SIGNAL_CHECK = "signal-check";
+		public static final String SIGNAL_INFO = "signal-info";
+		public static final String SIGNAL_DOT = "signal-dot";
 		
 	}
 	
