@@ -1,9 +1,10 @@
 package ua.kiev.shuriken.blueprint;
 
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
+import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
@@ -19,6 +20,7 @@ public class BlueprintParser {
 	 * as blueprint strings into JSON, as JSON into blueprint strings.
 	 * @return Buffer's size in bytes.
 	*/
+	@Deprecated
 	public static int getBufferSize() {
 		return bufferSize;
 	}
@@ -27,8 +29,30 @@ public class BlueprintParser {
 	 * Changes buffer's size that is used for conversion between blueprint strings and JSON.
 	 * @param bufferSize Buffer size in bytes
 	 */
+	@Deprecated
 	public static void setBufferSize(int bufferSize) {
 		BlueprintParser.bufferSize = bufferSize;
+	}
+
+	private static byte[] inflate(byte[] data) throws DataFormatException {
+		//Output size estimation
+		Inflater inflater = new Inflater();
+		inflater.setInput(data);
+		byte[] block = new byte[bufferSize];
+		int fullBlocks = -1;
+		int lastBlock;
+		do {
+			fullBlocks++;
+			lastBlock = inflater.inflate(block);
+		} while (lastBlock == bufferSize);
+		inflater.end();
+		//Actual output
+		byte[] completeData = new byte[bufferSize * fullBlocks + lastBlock];
+		inflater = new Inflater();
+		inflater.setInput(data);
+		inflater.inflate(completeData);
+		inflater.end();
+		return completeData;
 	}
 	
 	/**
@@ -38,22 +62,39 @@ public class BlueprintParser {
 	 */
 	public static String fromBlueprintStringToJSON(String blueprint) {
 		try {
-			blueprint = blueprint.substring(1, blueprint.length());
+			blueprint = blueprint.substring(1);
 			
 			Decoder decoder = Base64.getDecoder();
 			byte[] decodedByteArray = decoder.decode(blueprint);
+			byte[] encodedByteArray = inflate(decodedByteArray);
 			
-			Inflater zDecoder = new Inflater();
-			byte[] encodedByteArray = new byte[bufferSize];
-			
-			zDecoder.setInput(decodedByteArray, 0, decodedByteArray.length);
-			int resultLength = zDecoder.inflate(encodedByteArray);
-			zDecoder.end();
-			
-			return new String(encodedByteArray, 0, resultLength, "ASCII");
+			return new String(encodedByteArray, StandardCharsets.UTF_8);
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	private static byte[] deflate(byte[] data) {
+		//Output size estimation
+		Deflater deflater = new Deflater();
+		deflater.setInput(data);
+		deflater.finish();
+		byte[] block = new byte[bufferSize];
+		int fullBlocks = -1;
+		int lastBlock;
+		do {
+			fullBlocks++;
+			lastBlock = deflater.deflate(block);
+		} while (lastBlock == bufferSize);
+		deflater.end();
+		//Actual output
+		byte[] completeData = new byte[bufferSize * fullBlocks + lastBlock];
+		deflater = new Deflater();
+		deflater.setInput(data);
+		deflater.finish();
+		deflater.deflate(completeData);
+		deflater.end();
+		return completeData;
 	}
 	
 	/**
@@ -63,18 +104,12 @@ public class BlueprintParser {
 	 */
 	public static String fromJSONToBlueprintString(String json) {
 		try {
-			Deflater zEncoder = new Deflater();
-			byte[] stringBytes = json.getBytes("ASCII");
-			
-			zEncoder.setInput(stringBytes);
-			zEncoder.finish();
-			byte[] encodedBytes = new byte[bufferSize];
-			int size = zEncoder.deflate(encodedBytes, 0, bufferSize);
-			zEncoder.end();
+			byte[] stringBytes = json.getBytes(StandardCharsets.UTF_8);
+			byte[] encodedBytes = deflate(stringBytes);
 			
 			Encoder encoder = Base64.getEncoder();
 			
-			return "0" + encoder.encodeToString(Arrays.copyOfRange(encodedBytes, 0, size));
+			return "0" + encoder.encodeToString(encodedBytes);
 		} catch (Exception e) {
 			return null;
 		}
