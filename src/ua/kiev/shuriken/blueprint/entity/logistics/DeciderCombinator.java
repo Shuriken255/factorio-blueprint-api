@@ -11,18 +11,37 @@ public class DeciderCombinator extends Entity {
 	public static final int DIRECTION_SOUTH = 4;
 	public static final int DIRECTION_WEST = 6;
 	
-	
+
+	@Deprecated
 	public DeciderCombinator(float x, float y, int direction, Condition condition, String outputSignal) {
 		super(x, y, direction);
 		this.condition = condition;
 		this.outputSignal = outputSignal;
 	}
-	
+
+	@Deprecated
 	public DeciderCombinator(float x, float y, Condition condition, String outputSignal) {
 		super(x, y);
 		this.condition = condition;
 		this.outputSignal = outputSignal;
 	}
+
+
+	public DeciderCombinator(float x, float y, int direction, Condition condition, String outputSignal, boolean copyCountFromInput) {
+		super(x, y, direction);
+		this.condition = condition;
+		this.outputSignal = outputSignal;
+		this.copyCountFromInput = copyCountFromInput;
+	}
+
+	public DeciderCombinator(float x, float y, Condition condition, String outputSignal, boolean copyCountFromInput) {
+		super(x, y);
+		this.condition = condition;
+		this.outputSignal = outputSignal;
+		this.copyCountFromInput = copyCountFromInput;
+	}
+
+
 	
 	@Override
 	public String getName() {

@@ -207,9 +207,9 @@ public abstract class Entity {
 			}
 		} else {
 			if(color == Connection.COLOR_GREEN) {
-				inputGreenConnections.add(new Connection(entity, typeTo));
+				outputGreenConnections.add(new Connection(entity, typeTo));
 			} else {
-				inputRedConnections.add(new Connection(entity, typeTo));
+				outputRedConnections.add(new Connection(entity, typeTo));
 			}
 		}
 	}

@@ -8,6 +8,9 @@ public class Condition {
 	public static final char COMPARATOR_LESS_THAN = '<';
 	public static final char COMPARATOR_MORE_THAN = '>';
 	public static final char COMPARATOR_EQUALS = '=';
+	public static final char COMPARATOR_LESS_THAN_EQUAL = '\u2264';
+	public static final char COMPARATOR_MORE_THAN_EQUAL = '\u2265';
+	public static final char COMPARATOR_NOT_EQUALS = '\u2260';
 	
 	/**
 	 * Creates new Condition class object with signal as second part in this condition.
